@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int target = 0;  //М: номер точки MovePoint
-    public Transform exit;  //М: точка финиша
-    public Transform[] wayPoints;
-    public float navigation;
+    [SerializeField]
+    private Transform exit;  //М: точка финиша
 
+    [SerializeField]
+    private Transform[] wayPoints;
+
+    [SerializeField]
+    private float navigation;
+
+
+    private int target = 0;  //М: номер точки MovePoint
     private Transform enemy;
     private float navigationTime = 0;
 
@@ -49,7 +55,7 @@ public class Enemy : MonoBehaviour
         }
         else if (collision.tag == "Finish")
         {
-            Manager.instance.removeEnemyFromScreen();
+            Manager.Instance.removeEnemyFromScreen();
             Destroy(gameObject);
         }
     }

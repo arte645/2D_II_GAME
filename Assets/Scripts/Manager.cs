@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+public class Manager : Loader<Manager>
 {
-    public static Manager instance;
-    public GameObject spawnPoint;
-    public GameObject[] enemies;
-    public int maxEnemiesOnScreen;
-    public int totalEnemies;
-    public int enemiesPerSpawn;
+    [SerializeField]
+    private GameObject spawnPoint;
+
+    [SerializeField]
+    private GameObject[] enemies;
+
+    [SerializeField]
+    private int maxEnemiesOnScreen;
+
+    [SerializeField]
+    private int totalEnemies;
+
+    [SerializeField]
+    private int enemiesPerSpawn;
+
     private int enemiesOnScreen = 0;
-    private const float spawnDelay = 1f;
+    private const float spawnDelay = 1f;  //М: Отвечает за перерыв между спаунами противников в секундах
 
-    void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else if (instance != null)
-            Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
-    }
 
     // Start is called before the first frame update
     void Start()
