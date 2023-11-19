@@ -9,7 +9,7 @@ public class TowerButton : MonoBehaviour
 
     public GameObject TowerObject
     {
-        get{
+        get {
             return towerObject;
         }
     }
