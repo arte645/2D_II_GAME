@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e840fcd40db7c224d8e7872996dd7351
+guid: 2107b3e92afb93d4c868e03d85d652d1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 20, z: 0, w: 11}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -105,22 +105,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lightning_icon
+      name: Flame icon_0
       rect:
         serializedVersion: 2
-        x: 1622
-        y: 25
-        width: 270
-        height: 263
+        x: 2
+        y: 21
+        width: 382
+        height: 373
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 4, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e693a716f172bd4fa5b8cd3dc2ae97a
-      internalID: 1970763065
+      spriteID: de5c32db39da8344cb03f4611531c65b
+      internalID: -1174069945
       vertices: []
       indices: 
       edges: []
@@ -129,14 +129,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lightning_icon: 1970763065
+      Flame icon_0: -1174069945
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
