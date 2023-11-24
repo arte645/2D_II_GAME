@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 9116606799402456238}
   - component: {fileID: 195275694055533772}
   - component: {fileID: 788838284705394097}
+  - component: {fileID: -5480817551853056035}
   m_Layer: 0
   m_Name: LightningBall
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,3 +102,17 @@ CircleCollider2D:
   m_Offset: {x: 0.005, y: 0.006}
   serializedVersion: 2
   m_Radius: 0.14
+--- !u!114 &-5480817551853056035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617901202238360205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460cee0ae88e58f41aee9bcdc4577ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 3
+  pType: 0

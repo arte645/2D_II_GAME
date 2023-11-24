@@ -19,7 +19,8 @@ public class Manager : Loader<Manager>
     [SerializeField]
     private int enemiesPerSpawn;
 
-    private int enemiesOnScreen = 0;
+    public List<Enemy> EnemyList = new List<Enemy>();
+
     private const float spawnDelay = 1f;  //М: Отвечает за перерыв между спаунами противников в секундах
 
 
@@ -37,15 +38,14 @@ public class Manager : Loader<Manager>
 
     IEnumerator Spawn()
     {
-        if (enemiesPerSpawn > 0 && enemiesOnScreen < totalEnemies)
+        if (enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies)
         {
             for (int i = 0; i < enemiesPerSpawn; i++)
             {
-                if (enemiesOnScreen < maxEnemiesOnScreen)
+                if (EnemyList.Count < maxEnemiesOnScreen)
                 {
                     GameObject newEnemy = Instantiate(enemies[1]);  //М: тут можно задавать, какие противники будут спауниться на карту
                     newEnemy.transform.position = spawnPoint.transform.position;
-                    enemiesOnScreen += 1;
                 }
             }
 
@@ -54,11 +54,24 @@ public class Manager : Loader<Manager>
         }
     }
 
-    public void removeEnemyFromScreen()
+    public void RegisterEnemy(Enemy enemy)
     {
-        if (enemiesOnScreen > 0)
+        EnemyList.Add(enemy);
+    }
+
+    public void UnregisterEnemy(Enemy enemy)
+    {
+        Destroy(enemy.gameObject);
+        EnemyList.Remove(enemy);
+    }
+
+    public void DestroyEnemies()
+    {
+        foreach (Enemy enemy in EnemyList)
         {
-            enemiesOnScreen -= 1;
+            Destroy(enemy.gameObject);
         }
+
+        EnemyList.Clear();
     }
 }

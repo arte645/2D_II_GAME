@@ -16,7 +16,7 @@ public class Loader <T>: MonoBehaviour where T: MonoBehaviour
 
             DontDestroyOnLoad(FindObjectOfType<T>());
 
-            return Instance;
+            return instance;
         }
     }
 }
