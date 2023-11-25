@@ -8,7 +8,7 @@ public class SaveController : MonoBehaviour
 {
     void Start()
     {
-        string path = Application.persistentDataPath + "/save.gamesave";
+        string path = Application.persistentDataPath + "/save.txt";
         
         StreamWriter writer = new StreamWriter(path);
         writer.Write(SceneManager.GetActiveScene().name);

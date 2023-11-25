@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5900573433445418338}
   - component: {fileID: 7338995599698298792}
+  - component: {fileID: -6583234857110937607}
   m_Layer: 0
   m_Name: Tesla_coil
   m_TagString: Tower
@@ -84,3 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6583234857110937607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378989521264763404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e4242b07b399d40a62489b19d67c6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 0.01
+  attackRadius: 3
+  projectile: {fileID: -5480817551853056035, guid: 14921cd21fbe5dd4b85aa68d190a3b22, type: 3}
