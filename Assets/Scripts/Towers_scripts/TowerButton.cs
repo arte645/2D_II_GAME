@@ -13,7 +13,7 @@ public class TowerButton : MonoBehaviour
     [SerializeField]
     private int towerPrice;
 
-    public TowerControle TowerObject
+    public TowerControll TowerObject
     {
         get {
             return towerObject;
