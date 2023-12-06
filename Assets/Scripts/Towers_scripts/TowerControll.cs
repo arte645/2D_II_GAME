@@ -60,7 +60,16 @@ public class TowerControll : MonoBehaviour
         isAttacking = false;
         Projectile newProjectile = Instantiate(projectile) as Projectile;
         newProjectile.transform.localPosition = transform.localPosition;
-
+        /*
+        if (newProjectile.PType == projectileType.FireBall)
+        {
+            Manager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Fireball);
+        }
+        else if (newProjectile.PType == projectileType.LightningBall)
+        {
+            Manager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Lazer);
+        }
+        */
         if(targetEnemy==null)
         {
             Destroy(newProjectile);

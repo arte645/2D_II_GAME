@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int health;
 
+    [SerializeField]
+    int rewardAmount;
+
 
     private int target = 0;  //М: номер точки MovePoint
     Transform enemy;
@@ -69,7 +72,10 @@ public class Enemy : MonoBehaviour
         }
         else if (collision.tag == "Finish")
         {
+            Manager.Instance.RoundEscaped += 1;
+            Manager.Instance.TotalEscaped += 1;
             Manager.Instance.UnregisterEnemy(this);
+            Manager.Instance.IsWaveOver();
         }
         else if (collision.tag == "projectile")
         {
@@ -96,5 +102,10 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         isDead = true;
+        enemyCollider.enabled = false;
+        Manager.Instance.TotalKilled += 1;
+        Manager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Death);
+        Manager.Instance.addMoney(rewardAmount);
+        Manager.Instance.IsWaveOver();
     }
 }
