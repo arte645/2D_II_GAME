@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.IO;
+using System;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
@@ -10,8 +12,9 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         path = Application.persistentDataPath + "/save.txt";
+        Debug.Log(path);
         FileInfo fi1 = new FileInfo(path);
-        if(fi1.Exists)
+        if(fi1.Exists && fi1.Length!=0)
         {
             StreamReader read = new StreamReader(path);
             save = read.ReadLine();
@@ -20,7 +23,12 @@ public class MenuController : MonoBehaviour
         else
         {
             StreamWriter writer = new StreamWriter(path);
-            writer.WriteLine("Level1", true);
+            string scene = "Level1";
+            char[] sceneArray = scene.ToCharArray();
+            string output="";
+            for(int i=0;i<sceneArray.Length;i++)
+                output+=Convert.ToChar(Convert.ToInt16(sceneArray[i]) + 1).ToString();
+            writer.WriteLine(output, true);
             save = "Level1";
             writer.Close();
         }
@@ -33,7 +41,15 @@ public class MenuController : MonoBehaviour
 
     public void Continue()
     {
-        SceneManager.LoadScene(save);
+        path = Application.persistentDataPath + "/save.txt";
+        StreamReader read = new StreamReader(path);
+        save = read.ReadLine();
+        read.Close();
+        char[] sceneArray = save.ToCharArray();
+        string output="";
+        for(int i=0;i<sceneArray.Length;i++)
+            output+=Convert.ToChar(Convert.ToInt16(sceneArray[i]) - 1);
+        SceneManager.LoadScene(output);
     }
 
     public void Quit_game()
