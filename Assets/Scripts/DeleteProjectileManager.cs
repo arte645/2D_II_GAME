@@ -12,6 +12,7 @@ public class DeleteProjectileManager : MonoBehaviour
         if(timeBeforeDeleting<=0f)
         {
             Destroy(gameObject);
+            timeBeforeDeleting=1f;
         }
     }
 }
