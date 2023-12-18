@@ -14513,6 +14513,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad00502b1c0e3334699098e159992a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1418108434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320189263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5934c9822d40d8f48add67b97e1b9de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1438721571
 GameObject:
   m_ObjectHideFlags: 0
@@ -18228,6 +18240,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1418108434}
+        m_TargetAssemblyTypeName: SaveController, Assembly-CSharp
+        m_MethodName: UpdateSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1418108433}
         m_TargetAssemblyTypeName: LoadToMenuManager, Assembly-CSharp
         m_MethodName: LoadToMenu

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveController : MonoBehaviour
 {
-    void Start()
+    public void UpdateSave()
     {
         string path = Application.persistentDataPath + "/save.txt";
         
@@ -19,6 +19,6 @@ public class SaveController : MonoBehaviour
         for(int i=0;i<sceneArray.Length;i++)
             output+=Convert.ToChar(Convert.ToInt16(sceneArray[i]) + 1).ToString();
             Debug.Log(output);
-        writer.WriteLine(output);
+        writer.WriteLine(output, true);
     }
 }
