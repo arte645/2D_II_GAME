@@ -8,7 +8,7 @@ public class DeleteProjectileManager : MonoBehaviour
 
     void Update()
     {
-        timeBeforeDeleting -= (Camera.transform.forward * v + Camera.transform.right * h) * Time.deltaTime;
+        timeBeforeDeleting -= Time.deltaTime;
         if(timeBeforeDeleting<=0f)
         {
             Destroy(gameObject);
