@@ -232,7 +232,7 @@ public class Manager : Loader<Manager>
                 break;
 
             case gameStatus.next:
-                playBtnLabel.text = "Nex wave";
+                playBtnLabel.text = "Next wave";
 
                 break;
             
