@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum projectileType
 {
@@ -8,18 +8,12 @@ public enum projectileType
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    int attackDamage;
+    private readonly int attackDamage;
 
     [SerializeField]
-    projectileType pType;
+    private readonly projectileType pType;
 
-    public int AttackDamage
-    {
-        get{return attackDamage;}
-    }
+    public int AttackDamage => attackDamage;
 
-    public projectileType PType
-    {
-        get{return pType;}
-    }
+    public projectileType PType => pType;
 }

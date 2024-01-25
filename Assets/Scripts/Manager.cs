@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,44 +10,42 @@ public enum gameStatus
 public class Manager : Loader<Manager>
 {
     [SerializeField]
-    private int totalWaves= 10;
+    private readonly int totalWaves = 10;
 
     [SerializeField]
-    private Text totalMoneyLabel;
+    private readonly Text totalMoneyLabel;
 
     [SerializeField]
-    private Text currentWave;
+    private readonly Text currentWave;
 
     [SerializeField]
-    private Text totalEscapedLabel;
+    private readonly Text totalEscapedLabel;
 
     [SerializeField]
-    private Text playBtnLabel;
+    private readonly Text playBtnLabel;
 
     [SerializeField]
-    private Button playBtn;
+    private readonly Button playBtn;
 
     [SerializeField]
-    private GameObject spawnPoint;
+    private readonly GameObject spawnPoint;
 
     [SerializeField]
-    private Enemy[] enemies;
+    private readonly Enemy[] enemies;
 
     [SerializeField]
     private int totalEnemies = 5;
 
     [SerializeField]
-    private int enemiesPerSpawn;
-
-    int waveNumber = 0;
-    int totalMoney = 10;
-    int totalEscaped = 0;
-    int roundEscaped = 0;
-    int totalKilled = 0;
-    int whichEnemiesToSpawn = 0;
-    int enemiesToSpawn = 0;
-    gameStatus currentState = gameStatus.play;
-    AudioSource audioSource;
+    private readonly int enemiesPerSpawn;
+    private int waveNumber = 0;
+    private int totalMoney = 10;
+    private int totalEscaped = 0;
+    private int roundEscaped = 0;
+    private int totalKilled = 0;
+    private int enemiesToSpawn = 0;
+    private gameStatus currentState = gameStatus.play;
+    private AudioSource audioSource;
 
     public List<Enemy> EnemyList = new List<Enemy>();
 
@@ -55,63 +53,43 @@ public class Manager : Loader<Manager>
 
     public int TotalEscaped
     {
-        get { return totalEscaped; }
-        set { totalEscaped = value; }
+        get => totalEscaped;
+        set => totalEscaped = value;
     }
 
     public int RoundEscaped
     {
-        get { return roundEscaped; }
-        set { roundEscaped = value; }
+        get => roundEscaped;
+        set => roundEscaped = value;
     }
 
-    public int TotalKilled 
+    public int TotalKilled
     {
-        get { return totalKilled; }
-        set { totalKilled = value; }
+        get => totalKilled;
+        set => totalKilled = value;
     }
-    
+
     public int TotalMoney
     {
-        get 
-        { 
-            return totalMoney; 
-        }
-        set 
-        { 
-            totalMoney = value; 
-            totalMoneyLabel.text = TotalMoney.ToString();   
+        get => totalMoney;
+        set
+        {
+            totalMoney = value;
+            totalMoneyLabel.text = TotalMoney.ToString();
         }
     }
 
-    public AudioSource AudioSource
-    {
-        get { return audioSource; }
-    }
+    public AudioSource AudioSource => audioSource;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        playBtn.gameObject.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
-        ShowMenu();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        HandleEscape();
-    }
-
-    IEnumerator Spawn()
+    private IEnumerator Spawn()
     {
         if (enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies)
         {
-            for (int i = 0; i < enemiesPerSpawn; i++)
+            for (var i = 0; i < enemiesPerSpawn; i++)
             {
                 if (EnemyList.Count < totalEnemies)
                 {
-                    Enemy newEnemy = Instantiate(enemies[Random.Range(0, enemiesToSpawn)]) as Enemy;  //М: тут можно задавать, какие противники будут спауниться на карту
+                    var newEnemy = Instantiate(enemies[Random.Range(0, enemiesToSpawn)]) as Enemy;
                     newEnemy.transform.position = spawnPoint.transform.position;
                 }
             }
@@ -134,7 +112,7 @@ public class Manager : Loader<Manager>
 
     public void DestroyEnemies()
     {
-        foreach (Enemy enemy in EnemyList)
+        foreach (var enemy in EnemyList)
         {
             Destroy(enemy.gameObject);
         }
@@ -149,24 +127,27 @@ public class Manager : Loader<Manager>
 
     public void subtractMoney(int amount)
     {
-        if (TotalMoney < amount){
+        if (TotalMoney < amount)
+        {
             TotalMoney = 0;
         }
-        else{
+        else
+        {
             TotalMoney -= amount;
         }
     }
 
     public void IsWaveOver()
     {
-        totalEscapedLabel.text= "Escaped " + TotalEscaped + " / 10";
+        totalEscapedLabel.text = "Escaped " + TotalEscaped + " / 10";
 
-        if ((RoundEscaped + TotalKilled)== totalEnemies)
+        if ((RoundEscaped + TotalKilled) == totalEnemies)
         {
             if (waveNumber <= enemies.Length)
             {
                 enemiesToSpawn = waveNumber;
             }
+
             SetCurrentGameState();
             ShowMenu();
         }
@@ -178,7 +159,7 @@ public class Manager : Loader<Manager>
         {
             currentState = gameStatus.gameover;
         }
-        else if (waveNumber ==0 && (RoundEscaped + TotalKilled) ==0 )
+        else if (waveNumber == 0 && (RoundEscaped + TotalKilled) == 0)
         {
             currentState = gameStatus.play;
         }
@@ -194,13 +175,13 @@ public class Manager : Loader<Manager>
 
     public void PlayButtonPressed()
     {
-        switch (currentState) 
+        switch (currentState)
         {
             case gameStatus.next:
                 waveNumber += 1;
                 totalEnemies += waveNumber;
                 break;
-            
+
             default:
                 totalEnemies = 5;
                 TotalEscaped = 0;
@@ -214,10 +195,11 @@ public class Manager : Loader<Manager>
                 break;
 
         }
+
         DestroyEnemies();
         TotalKilled = 0;
         RoundEscaped = 0;
-        currentWave.text = "Wave" + (waveNumber +1);
+        currentWave.text = "Wave" + (waveNumber + 1);
         StartCoroutine(Spawn());
         playBtn.gameObject.SetActive(false);
     }
@@ -235,19 +217,19 @@ public class Manager : Loader<Manager>
                 playBtnLabel.text = "Next wave";
 
                 break;
-            
+
             case gameStatus.play:
                 playBtnLabel.text = "Play game";
 
                 break;
-            
+
             case gameStatus.win:
                 playBtnLabel.text = "Play game";
 
                 break;
 
-
         }
+
         playBtn.gameObject.SetActive(true);
     }
 

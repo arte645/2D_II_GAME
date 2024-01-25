@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,16 +7,19 @@ public class SaveController : MonoBehaviour
 {
     public void UpdateSave()
     {
-        string path = Application.persistentDataPath + "/save.txt";
-        
-        StreamWriter writer = new StreamWriter(path);
-        string scene = SceneManager.GetActiveScene().name.ToString();
-        string output="";
+        var path = Application.persistentDataPath + "/save.txt";
 
-        char[] sceneArray = scene.ToCharArray();
-        for(int i=0;i<sceneArray.Length;i++)
-            output+=Convert.ToChar(Convert.ToInt16(sceneArray[i]) + 1).ToString();
-            Debug.Log(output);
+        var writer = new StreamWriter(path);
+        var scene = SceneManager.GetActiveScene().name.ToString();
+        var output = "";
+
+        var sceneArray = scene.ToCharArray();
+        for (var i = 0; i < sceneArray.Length; i++)
+        {
+            output += Convert.ToChar(Convert.ToInt16(sceneArray[i]) + 1).ToString();
+        }
+
+        Debug.Log(output);
         writer.WriteLine(output, true);
     }
 }

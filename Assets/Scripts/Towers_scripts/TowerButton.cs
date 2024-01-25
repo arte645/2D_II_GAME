@@ -1,36 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TowerButton : MonoBehaviour
 {
     [SerializeField]
-    private TowerControll towerObject;
+    private readonly TowerControll towerObject;
 
     [SerializeField]
-    private Sprite dragSprite;
+    private readonly Sprite dragSprite;
 
     [SerializeField]
-    private int towerPrice;
+    private readonly int towerPrice;
 
-    public TowerControll TowerObject
-    {
-        get {
-            return towerObject;
-        }
-    }
+    public TowerControll TowerObject => towerObject;
 
-    public Sprite DragSprite
-    {
-        get {
-            return dragSprite;
-        }
-    }
+    public Sprite DragSprite => dragSprite;
 
-    public int TowerPrice
-    {
-        get{
-            return towerPrice;
-        }
-    }
+    public int TowerPrice => towerPrice;
 }

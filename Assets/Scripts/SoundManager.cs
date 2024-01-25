@@ -1,51 +1,31 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SoundManager : Loader <SoundManager>
+public class SoundManager : Loader<SoundManager>
 {
     [SerializeField]
-    AudioClip lazer;
+    private readonly AudioClip lazer;
     [SerializeField]
-    AudioClip fireball;
+    private readonly AudioClip fireball;
     [SerializeField]
-    AudioClip error;
+    private readonly AudioClip death;
     [SerializeField]
-    AudioClip death;
+    private readonly AudioClip click;
     [SerializeField]
-    AudioClip click;
+    private readonly AudioClip afterYou;
     [SerializeField]
-    AudioClip afterYou;
+    private readonly AudioClip newgame;
     [SerializeField]
-    AudioClip newgame;
+    private readonly AudioClip build;
     [SerializeField]
-    AudioClip build;
-    [SerializeField]
-    AudioClip gameover;
+    private readonly AudioClip gameover;
 
-    public AudioClip Lazer{
-        get{ return lazer; }
-    }
-    public AudioClip Fireball{
-        get{ return fireball; }
-    }
-    public AudioClip Error{
-        get{ return Error; }
-    }
-    public AudioClip Death{
-        get{ return death; }
-    }
-    public AudioClip Click{
-        get{ return click; }
-    }
-    public AudioClip AfterYou{
-        get{ return afterYou; }
-    }
-    public AudioClip Newgame{
-        get{ return newgame; }
-    }
-    public AudioClip Build{
-        get{ return build; }
-    }
-    public AudioClip GameOver{
-        get{ return gameover; }
-    }
+    public AudioClip Lazer => lazer;
+    public AudioClip Fireball => fireball;
+    public AudioClip Error => Error;
+    public AudioClip Death => death;
+    public AudioClip Click => click;
+    public AudioClip AfterYou => afterYou;
+    public AudioClip Newgame => newgame;
+    public AudioClip Build => build;
+    public AudioClip GameOver => gameover;
 }
